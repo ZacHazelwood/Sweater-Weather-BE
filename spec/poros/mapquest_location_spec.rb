@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MapquestLocation do
   it "exists and has attributes" do
-    data = [ { :latLng => {  lat: 39.738453, lng: -104.984853 } } ]
+    data = { :latLng => {  lat: 39.738453, lng: -104.984853 } }
     location = MapquestLocation.new(data)
 
     expect(location).to be_a MapquestLocation

@@ -3,7 +3,7 @@ class MapquestLocation
               :longitude
 
   def initialize(data)
-    @latitude   = data[0][:latLng][:lat]
-    @longitude   = data[0][:latLng][:lng]
+    @latitude   = data[:latLng][:lat]
+    @longitude   = data[:latLng][:lng]
   end
 end
