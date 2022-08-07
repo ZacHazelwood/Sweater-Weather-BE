@@ -67,4 +67,11 @@ RSpec.describe 'forecast endpoints' do
         expect(day).to_not have_key :feels_like
       end
   end
+
+  it "sends an error if no location is searched" do
+    get '/api/v1/forecast'
+
+    expect(response.status).to eq 400
+    expect(response.body).to eq("{\"status\":\"Not Found\",\"code\":400,\"message\":\"Please enter a location\"}")
+  end
 end
