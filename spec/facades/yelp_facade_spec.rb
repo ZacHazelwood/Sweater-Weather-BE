@@ -6,7 +6,7 @@ RSpec.describe YelpFacade do
     data = {  lat: 39.738453, lng: -104.984853 }
     location = MapquestLocation.new(data)
     forecast = OpenWeatherFacade.create_forecast_results(location)
-    params = {location: location_city, forecast: forecast, term: "asian"}
+    params = {location: location_city, forecast: forecast, food: "asian"}
 
     yelp = YelpFacade.create_yelp_results(params)
 
