@@ -10,6 +10,8 @@ RSpec.describe OpenWeatherFacade do
     expect(results).to be_a Forecast
     expect(results.current_weather).to be_a CurrentWeather
     expect(results.daily_weather).to be_all DailyWeather
+    expect(results.daily_weather.count).to eq 5
     expect(results.hourly_weather).to be_all HourlyWeather
+    expect(results.hourly_weather.count).to eq 8
   end
 end

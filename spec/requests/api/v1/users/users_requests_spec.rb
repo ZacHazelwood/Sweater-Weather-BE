@@ -6,13 +6,14 @@ RSpec.describe 'User Requests' do
       user = { "email": "test_1@email.com",
                "password": '12345',
                "password_confirmation": '12345' }
-      post '/api/v1/users', params: user
+      headers = {"CONTENT_TYPE" => "application/json"}
+      post '/api/v1/users', headers: headers, params: user
 
       expect(response).to be_successful
 
       response_body = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response_body).to have_key :data         
+      expect(response_body).to have_key :data
     end
   end
 end
