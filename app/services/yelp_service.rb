@@ -10,7 +10,7 @@ class YelpService
     response = conn.get(end_point) do |f|
       f.params['location'] = "#{location.latitude},#{location.longitude}"
       f.params['term'] = term
-      f.headers['Authorization'] = 'Bearer NPc1q-XyjespyxU_3FIwyV7J-eDIYLtNcgUaYQKHfRSammf8Jmqc5bE_opeLHfkN2yVrXJz-Cq8bf2kVCpJd-wusKWzGxSpJoigLqlwv2uarr6cUxrlc3WhEZiXxYnYx'
+      f.headers['Authorization'] = "Bearer #{ENV['yelp_api_key']}"
     end
     JSON.parse(response.body, symbolize_names: true)
   end
