@@ -17,10 +17,8 @@ class Api::V1::RoadTripController < ApplicationController
     def check_fields
       if params[:origin] == "" || params[:destination] == ""
         render json: { error: 'Missing Field' }, status: 401
-      elsif !params[:origin] || !params[:destination]
+      elsif params[:origin].nil? || params[:destination].nil?
         render json: { error: 'Missing Field' }, status: 401
       end
     end
 end
-
-# edb6d5b351079f48bd3c897f5d4b4820
