@@ -10,6 +10,7 @@ class OpenWeatherService
       f.params['lat'] = location.latitude
       f.params['lon'] = location.longitude
       f.params['exclude'] = 'minutely'
+      f.params['units'] = 'imperial'
       f.params['appid'] = ENV['openweather_api_key']
     end
     JSON.parse(response.body, symbolize_names: true)
