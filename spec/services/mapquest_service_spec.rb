@@ -16,4 +16,10 @@ RSpec.describe MapquestService do
     expect(response[:results].first).to have_key(:locations)
     expect(response[:results].first[:locations].first).to have_key(:latLng)
   end
+
+  it "connects to MapQuest directions" do
+    response = MapquestService.get_directions_data("denver,co", "boulder,co")
+
+    expect(response).to be_a Hash
+  end
 end
