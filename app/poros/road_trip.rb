@@ -8,8 +8,8 @@ class RoadTrip
 
   def initialize(origin, destination)
     @id = nil
-    @start_city = origin
-    @end_city = destination
+    @start_city = format_start_city(origin)
+    @end_city = format_end_city(destination)
     @travel_time = MapquestFacade.get_travel_time(origin, destination)
     @weather_at_eta = define_weather_at_eta(destination)
   end
@@ -45,5 +45,25 @@ class RoadTrip
     else
       destination_forecast[:hourly][hours][:weather][0][:description]
     end
+  end
+
+  def format_start_city(origin)
+    place = MapquestService.get_location_data(origin)[:results][0][:locations][0]
+    if place[:adminArea3] != ""
+      format = "#{place[:adminArea5]}, #{place[:adminArea3]}"
+    else
+      format = "#{place[:adminArea5]}, #{place[:adminArea1]}"
+    end
+    format
+  end
+
+  def format_end_city(destination)
+    place = MapquestService.get_location_data(destination)[:results][0][:locations][0]
+    if place[:adminArea3] != ""
+      format = "#{place[:adminArea5]}, #{place[:adminArea3]}"
+    else
+      format = "#{place[:adminArea5]}, #{place[:adminArea1]}"
+    end
+    format
   end
 end
