@@ -5,8 +5,8 @@ class MapquestFacade
     MapquestLocation.new(result)
   end
 
-  def self.get_travel_time(from, to)
-    directions_json = MapquestService.get_directions_data(from, to)
+  def self.get_travel_time(origin, destination)
+    directions_json = MapquestService.get_directions_data(origin, destination)
     if directions_json[:info][:messages].include?("We are unable to route with the given locations.")
       "impossible route"
     else

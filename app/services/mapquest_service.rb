@@ -13,11 +13,11 @@ class MapquestService
     Faraday.new(url: url)
   end
 
-  def self.get_directions_data(from, to)
+  def self.get_directions_data(origin, destination)
     end_point = '/directions/v2/route'
     response = conn.get(end_point) do |faraday|
-      faraday.params['from'] = from
-      faraday.params['to'] = to
+      faraday.params['from'] = origin
+      faraday.params['to'] = destination
       faraday.params['key'] = ENV['mapquest_api_key']
     end
     JSON.parse(response.body, symbolize_names: true)
