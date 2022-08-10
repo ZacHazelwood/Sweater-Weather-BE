@@ -7,7 +7,7 @@ RSpec.describe OpenWeatherService do
     expect(conn.class).to eq(Faraday::Connection)
   end
 
-  it 'gets forecast data from a MapQuest location' do
+  it 'gets forecast data from a MapQuest location', :vcr do
     data = {  lat: 39.738453, lng: -104.984853 }
     location = MapquestLocation.new(data)
 

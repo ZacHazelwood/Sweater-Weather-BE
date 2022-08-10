@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OpenWeatherFacade do
-  it "creates forecast results from a location" do
+  it "creates forecast results from a location", :vcr do
     data = {  lat: 39.738453, lng: -104.984853 }
     location = MapquestLocation.new(data)
 

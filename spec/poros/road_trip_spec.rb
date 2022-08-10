@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RoadTrip do
-  it "exists and has attributes" do
+  it "exists and has attributes", :vcr do
     trip = RoadTrip.new("denver, co", "las vegas, nv")
 
     expect(trip).to be_a RoadTrip
@@ -13,7 +13,7 @@ RSpec.describe RoadTrip do
     expect(trip.weather_at_eta[:conditions]).to be_a String
   end
 
-  it "can travel very far" do
+  it "can travel very far", :vcr do
     trip = RoadTrip.new("panama city", "toronto, canada")
 
     expect(trip).to be_a RoadTrip
@@ -25,7 +25,7 @@ RSpec.describe RoadTrip do
     expect(trip.weather_at_eta[:conditions]).to be_a String
   end
 
-  it "can be an object with an impossible route" do
+  it "can be an object with an impossible route", :vcr do
     trip = RoadTrip.new("denver, co", "tokyo, japan")
 
     expect(trip).to be_a RoadTrip
@@ -36,7 +36,7 @@ RSpec.describe RoadTrip do
   end
 
   describe 'instance methods' do
-    it "can format temperature" do
+    it "can format temperature", :vcr do
       # Have to test result class, as actual result changes every hour
       trip = RoadTrip.new("denver, co", "las vegas, nv")
 
@@ -47,7 +47,7 @@ RSpec.describe RoadTrip do
       expect(trip_2.format_temp("panama city", "toronto, canada")).to be_a Numeric
     end
 
-    it "can format conditions" do
+    it "can format conditions", :vcr do
       # Have to test result class, as actual result changes every hour
       trip = RoadTrip.new("denver, co", "las vegas, nv")
 
@@ -58,7 +58,7 @@ RSpec.describe RoadTrip do
       expect(trip_2.format_conditions("panama city", "toronto, canada")).to be_a String
     end
 
-    it "formats the name of a starting city" do
+    it "formats the name of a starting city", :vcr do
       city_with_state = "denver, co"
       city_without_state = "tokyo, japan"
       trip = RoadTrip.new(city_with_state, city_without_state)
@@ -67,7 +67,7 @@ RSpec.describe RoadTrip do
       expect(trip.format_start_city(city_without_state)).to eq("Tokyo, JP")
     end
 
-    it "formats the name of an ending city" do
+    it "formats the name of an ending city", :vcr do
       city_with_state = "denver, co"
       city_without_state = "tokyo, japan"
       trip = RoadTrip.new(city_without_state, city_with_state)
@@ -76,7 +76,7 @@ RSpec.describe RoadTrip do
       expect(trip.format_end_city(city_without_state)).to eq("Tokyo, JP")
     end
 
-    it "formats travel time" do
+    it "formats travel time", :vcr do
       trip_1 = RoadTrip.new("denver, co", "las vegas, nv")
 
       expect(trip_1.format_travel_time("denver, co", "las vegas, nv")).to eq("10 hour(s), 27 minute(s)")
