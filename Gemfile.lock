@@ -186,6 +186,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
+    vcr (6.1.0)
     webmock (3.17.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -219,6 +220,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   tzinfo-data
+  vcr
   webmock
 
 RUBY VERSION

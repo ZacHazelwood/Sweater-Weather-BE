@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Road Trip Requests" do
   describe 'happy path' do
-    it "reutrns a roadtrip from valid credentials" do
+    it "reutrns a roadtrip from valid credentials", :vcr do
       user_data = { "email": "email@email.com",
                     "password": "12345",
                     "password_confirmation": "12345" }
@@ -58,7 +58,7 @@ RSpec.describe "Road Trip Requests" do
       expect(attributes).to_not have_key :moon_rise
     end
 
-    it "reutrns a roadtrip from with an impossible route" do
+    it "reutrns a roadtrip from with an impossible route", :vcr do
       user_data = { "email": "email@email.com",
                     "password": "12345",
                     "password_confirmation": "12345" }

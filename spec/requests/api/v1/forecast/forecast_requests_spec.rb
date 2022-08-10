@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'forecast endpoints' do
-  it "connects to the index endpoint" do
+  it "connects to the index endpoint", :vcr do
     get '/api/v1/forecast?location=denver,co'
 
     response_body = JSON.parse(response.body, symbolize_names: true)

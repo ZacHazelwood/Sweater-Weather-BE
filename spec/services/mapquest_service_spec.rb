@@ -7,7 +7,7 @@ RSpec.describe MapquestService do
     expect(conn.class).to eq(Faraday::Connection)
   end
 
-  it "sends a response" do
+  it "sends a response", :vcr do
     response = MapquestService.get_location_data("denver, co")
 
     expect(response).to be_a Hash
@@ -17,7 +17,7 @@ RSpec.describe MapquestService do
     expect(response[:results].first[:locations].first).to have_key(:latLng)
   end
 
-  it "connects to MapQuest directions" do
+  it "connects to MapQuest directions", :vcr do
     response = MapquestService.get_directions_data("denver,co", "boulder,co")
 
     expect(response).to be_a Hash
